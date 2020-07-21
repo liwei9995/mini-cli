@@ -55,5 +55,11 @@
     "lint-staged": "^10.2.11",
     "prettier": "^2.0.5",
     "typescript": "^3.9.6"
+  },
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "got": "^11.5.1",
+    "minimist": "^1.2.5",
+    "terminal-image": "^1.2.0"
   }
 }
