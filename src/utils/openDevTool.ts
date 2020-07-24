@@ -4,8 +4,6 @@ import { execSync } from 'child_process'
 export const startDevToolProcess = () => {
   const shouldTryOpenDevToolAppleScript = process.platform === 'darwin'
 
-  console.log('shouldTryOpenDevToolAppleScript', shouldTryOpenDevToolAppleScript)
-
   if (shouldTryOpenDevToolAppleScript) {
     try {
       // Try our best to reuse existing tab

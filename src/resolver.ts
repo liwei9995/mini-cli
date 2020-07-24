@@ -1,19 +1,19 @@
-import got from 'got'
-import termialImage from 'terminal-image'
-import { getPort } from './utils'
-import { startDevToolProcess } from './utils/openDevTool'
+import { execSync } from 'child_process'
 
-export const login = async () => {
-  try {
-    startDevToolProcess()
+export const run = (command: string) => {
+  const shouldRunDevToolCli = process.platform === 'darwin'
 
-    const port = getPort()
-    const body = await got(`http://127.0.0.1:${port}/v2/login`).buffer()
-    console.log(await termialImage.buffer(body, {
-      width: 50,
-      height: 50
-    }))
-  } catch (error) {
-    console.log(error)
+  console.log('command', command)
+
+  if (shouldRunDevToolCli) {
+    const cliPath = '/Applications/wechatwebdevtools.app/Contents/MacOS/cli'
+    const cmd = `${cliPath} ${command}`
+
+    try {
+      execSync(cmd)
+      return true
+    } catch (err) {
+      console.log(`run WeChat Dev Tool error: ${err}`)
+    }
   }
 }
