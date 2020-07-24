@@ -10,7 +10,9 @@ export const run = (command: string) => {
     const cmd = `${cliPath} ${command}`
 
     try {
-      execSync(cmd)
+      execSync(cmd, {
+        stdio: 'inherit'
+      })
       return true
     } catch (err) {
       console.log(`run WeChat Dev Tool error: ${err}`)
