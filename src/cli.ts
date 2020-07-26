@@ -14,6 +14,7 @@ Commands:
 Options:
   --help, -h                 [boolean] show help
   --version, -v              [boolean] show version
+  cli-help                   [boolean] show WeChat dev tool help
   login                      [boolean] login WeChat dev tool
   preview                    [boolean] preview
   upload                     [boolean] upload
@@ -47,11 +48,10 @@ console.log(chalk.cyan(`win v${require('../package.json').version}`))
   if (options.command === 'port') {
     const port = getPort()
     console.log(chalk.blue(`微信开发者工具运行端口: ${chalk.magenta(port)}`))
-  } else if (options.command === 'login') {
-    run(process.argv.slice(2).join(' '))
+  } else if (options.command === 'cli-help') {
+    run('cli -h')
   } else {
-    console.error(chalk.red(`unknown command: ${options.command}`))
-    process.exit(1)
+    run(process.argv.slice(2).join(' '))
   }
 })()
 
@@ -70,7 +70,7 @@ async function resolveOptions() {
     argv.command = argv._[0]
   }
   // normalize root
-  // assumes all commands are in the form of `vite [command] [root]`
+  // assumes all commands are in the form of `win [command] [root]`
   if (!argv.root && argv._[1]) {
     argv.root = argv._[1]
   }
