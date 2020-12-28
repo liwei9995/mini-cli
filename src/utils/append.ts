@@ -1,1 +1,1 @@
-export const appendProject = () => {}
+export const appendProject = () => process.cwd()

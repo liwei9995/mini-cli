@@ -1,4 +1,20 @@
-export const cmdOpts = [{
+import { appendProject } from './index';
+
+type opt = {
+  name: string
+  alias?: string
+  options?: any
+  required: boolean
+  description?: string
+  get?: () => void
+}
+
+type option = {
+  cmd: string
+  opts: opt[]
+}
+
+export const cmdOpts: option[] = [{
   cmd: 'login',
   opts: [{
     name: 'qr-format',
@@ -39,7 +55,7 @@ export const cmdOpts = [{
     name: 'project',
     required: true,
     description: '项目路径',
-    get: () => {}
+    get: appendProject
   }]
 }, {
   cmd: 'auto-preview',
@@ -50,7 +66,8 @@ export const cmdOpts = [{
   }, {
     name: 'project',
     required: true,
-    description: '项目路径'
+    description: '项目路径',
+    get: appendProject
   }]
 }, {
   cmd: 'upload',
@@ -76,6 +93,6 @@ export const cmdOpts = [{
     name: 'project',
     required: true,
     description: '项目路径',
-    get: () => {}
+    get: appendProject
   }]
 }]

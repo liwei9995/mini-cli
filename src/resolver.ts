@@ -1,14 +1,33 @@
 import { execSync } from 'child_process'
 import { cmdOpts } from './utils/index'
 
-export const resolveCommand = (command: string, options?: any) => {
+export const resolveCommand = (command: string, options: any = {}) => {
   const action = options && options.command
   const found = cmdOpts.find(_ => _.cmd === action)
   const opts = found && found.opts
-  const requiredOpts = (opts || []).filter(opt => opt.required)
+  const missingOpts = (opts || []).filter(opt => {
+    const { alias = '' } = (opt || {}) as { alias?: string }
+    const name = opt.name || alias.slice(1)
 
-  console.log('cmdOpts', opts, 'options', options);
-  return requiredOpts.length > 0 ? '' : command
+    return opt.required && !options[name]
+  })
+  const missingParameters = missingOpts.map(o => {
+    const {
+      alias,
+      name,
+      get
+    } = o as {
+      name: string,
+      alias?: string,
+      get?: unknown
+    }
+    const key = alias || `--${name}`
+    const value = typeof get === 'function' ? get() : ''
+
+    return `${key} ${value}`
+  }).join(' ')
+
+  return `${command} ${missingParameters}`
 }
 
 export const run = (command: string) => {
