@@ -2,7 +2,7 @@ const argv = require('minimist')(process.argv.slice(2))
 
 import chalk from 'chalk'
 import { getPort } from './utils'
-import { run } from './resolver'
+import { run, resolveCommand } from './resolver'
 
 function logHelp() {
   console.log(`
@@ -48,10 +48,12 @@ console.log(chalk.cyan(`win v${require('../package.json').version}`))
   if (options.command === 'port') {
     const port = getPort()
     console.log(chalk.blue(`微信开发者工具运行端口: ${chalk.magenta(port)}`))
-  } else if (options.command === 'cli-help') {
+  } else if (['cli-help', 'cli help'].includes(options.command)) {
     run('cli -h')
   } else {
-    run(process.argv.slice(2).join(' '))
+    const cmd = resolveCommand(process.argv.slice(2).join(' '), options)
+
+    run(cmd)
   }
 })()
 

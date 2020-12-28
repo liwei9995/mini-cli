@@ -38,7 +38,8 @@ export const cmdOpts = [{
   }, {
     name: 'project',
     required: true,
-    description: '项目路径'
+    description: '项目路径',
+    get: () => {}
   }]
 }, {
   cmd: 'auto-preview',
@@ -57,20 +58,24 @@ export const cmdOpts = [{
     name: 'version',
     alias: '-v',
     required: true,
-    description: 'version 指定版本号'
+    description: 'version 指定版本号',
+    get: () => {}
   }, {
     name: 'desc',
     alias: '-d',
     required: true,
-    description: '上传代码时的备注'
+    description: '上传代码时的备注',
+    get: () => {}
   }, {
     name: 'info-output',
     alias: '-i',
     required: true,
-    description: '指定后，会将本次预览的额外信息以 json 格式输出至指定路径，如代码包大小、分包大小信息。'
+    description: '指定后，会将本次预览的额外信息以 json 格式输出至指定路径，如代码包大小、分包大小信息。',
+    get: () => {}
   }, {
     name: 'project',
     required: true,
-    description: '项目路径'
+    description: '项目路径',
+    get: () => {}
   }]
 }]
