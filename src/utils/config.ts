@@ -1,4 +1,4 @@
-import { appendProject } from './index';
+import { appendProject, appendInfoOutput, appendVersion, appendDescription } from './index';
 
 type opt = {
   name: string
@@ -34,6 +34,14 @@ export const cmdOpts: option[] = [{
     description: '输出登录结果到指定文件'
   }]
 }, {
+  cmd: 'open',
+  opts: [{
+    name: 'project',
+    required: true,
+    description: '项目路径',
+    get: appendProject
+  }]
+}, {
   cmd: 'preview',
   opts: [{
     name: 'qr-format',
@@ -61,8 +69,9 @@ export const cmdOpts: option[] = [{
   cmd: 'auto-preview',
   opts: [{
     name: 'info-output',
-    required: true,
-    description: '指定后，会将本次预览的额外信息以 json 格式输出至指定路径，如代码包大小、分包大小信息。'
+    required: false,
+    description: '指定后，会将本次预览的额外信息以 json 格式输出至指定路径，如代码包大小、分包大小信息。',
+    get: appendInfoOutput
   }, {
     name: 'project',
     required: true,
@@ -76,19 +85,19 @@ export const cmdOpts: option[] = [{
     alias: '-v',
     required: true,
     description: 'version 指定版本号',
-    get: () => {}
+    get: appendVersion
   }, {
     name: 'desc',
     alias: '-d',
     required: true,
     description: '上传代码时的备注',
-    get: () => {}
+    get: appendDescription
   }, {
     name: 'info-output',
     alias: '-i',
-    required: true,
+    required: false,
     description: '指定后，会将本次预览的额外信息以 json 格式输出至指定路径，如代码包大小、分包大小信息。',
-    get: () => {}
+    get: appendInfoOutput
   }, {
     name: 'project',
     required: true,

@@ -1,5 +1,5 @@
 import { execSync } from 'child_process'
-import { cmdOpts } from './utils/index'
+import { cmdOpts, isFunction } from './utils/index'
 
 export const resolveCommand = (command: string, options: any = {}) => {
   const action = options && options.command
@@ -22,7 +22,7 @@ export const resolveCommand = (command: string, options: any = {}) => {
       get?: unknown
     }
     const key = alias || `--${name}`
-    const value = typeof get === 'function' ? get() : ''
+    const value = isFunction(get) ? get() : ''
 
     return `${key} ${value}`
   }).join(' ')
@@ -33,7 +33,7 @@ export const resolveCommand = (command: string, options: any = {}) => {
 export const run = (command: string) => {
   const shouldRunDevToolCli = process.platform === 'darwin'
 
-  console.log(`command => ${command}`);
+  // console.log(`command => ${command}`);
 
   if (shouldRunDevToolCli) {
     const cliPath = '/Applications/wechatwebdevtools.app/Contents/MacOS/cli'

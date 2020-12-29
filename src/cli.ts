@@ -29,11 +29,9 @@ Options:
 `)
 }
 
-console.log(chalk.cyan(`win v${require('../package.json').version}`))
+console.log(chalk.cyan(`mini v${require('../package.json').version}`))
 ;(async () => {
   const { help, h, version, v } = argv
-
-  console.log('arvg', argv, process.argv.slice(2))
 
   if (help || h) {
     logHelp()
@@ -44,7 +42,6 @@ console.log(chalk.cyan(`win v${require('../package.json').version}`))
   }
 
   const options = await resolveOptions()
-  console.log('options', options)
   if (options.command === 'port') {
     const port = getPort()
     console.log(chalk.blue(`微信开发者工具运行端口: ${chalk.magenta(port)}`))
