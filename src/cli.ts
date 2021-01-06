@@ -4,38 +4,38 @@ import chalk from 'chalk'
 import { getPort } from './utils'
 import { run, resolveCommand } from './resolver'
 
-function logHelp() {
-  console.log(`
-Usage: win [command] [args] [--options]
+// function logHelp() {
+//   console.log(`
+// Usage: mini [command] [args] [--options]
 
-Commands:
-  win                       Start executing WeChat Dev Tool commands in current directory.
+// Commands:
+//   mini                       Start executing WeChat Dev Tool commands in current directory.
 
-Options:
-  --help, -h                 [boolean] show help
-  --version, -v              [boolean] show version
-  cli-help                   [boolean] show WeChat dev tool help
-  login                      [boolean] login WeChat dev tool
-  preview                    [boolean] preview
-  upload                     [boolean] upload
-  auto-preview               [boolean] autopreview
-  auto                       [boolean] automation
-  build-npm                  [boolean] build npm
-  open                       [boolean] open WeChat dev tool
-  close                      [boolean] close project window
-  quit                       [boolean] quit WeChat dev tool
-  reset-fileutils            [boolean] reset file utils
-  project                    [boolean] show project path
-`)
-}
+// Options:
+//   --help, -h                 [boolean] show help
+//   --version, -v              [boolean] show version
+//   cli-help                   [boolean] show WeChat dev tool help
+//   login                      [boolean] login WeChat dev tool
+//   preview                    [boolean] preview
+//   upload                     [boolean] upload
+//   auto-preview               [boolean] autopreview
+//   auto                       [boolean] automation
+//   build-npm                  [boolean] build npm
+//   open                       [boolean] open WeChat dev tool
+//   close                      [boolean] close project window
+//   quit                       [boolean] quit WeChat dev tool
+//   reset-fileutils            [boolean] reset file utils
+//   project                    [boolean] show project path
+// `)
+// }
 
-console.log(chalk.cyan(`mini v${require('../package.json').version}`))
+console.log(chalk.cyan(`WeChat Mini Program CLI v${require('../package.json').version}`))
 ;(async () => {
   const { help, h, version, v } = argv
 
   if (help || h) {
-    logHelp()
-    return
+    // logHelp()
+    // return
   } else if (version || v) {
     // noop, already logged
     return
@@ -69,7 +69,7 @@ async function resolveOptions() {
     argv.command = argv._[0]
   }
   // normalize root
-  // assumes all commands are in the form of `win [command] [root]`
+  // assumes all commands are in the form of `mini [command] [root]`
   if (!argv.root && argv._[1]) {
     argv.root = argv._[1]
   }

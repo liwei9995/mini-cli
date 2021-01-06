@@ -9,22 +9,24 @@ export const resolveCommand = (command: string, options: any = {}) => {
     const { alias = '' } = (opt || {}) as { alias?: string }
     const name = opt.name || alias.slice(1)
 
-    return opt.required && !options[name]
+    return (opt.required || opt.optional) && !options[name]
   })
   const missingParameters = missingOpts.map(o => {
     const {
       alias,
       name,
-      get
+      get,
+      optional
     } = o as {
-      name: string,
-      alias?: string,
+      name: string
+      alias?: string
+      optional?: boolean
       get?: unknown
     }
     const key = alias || `--${name}`
     const value = isFunction(get) ? get() : ''
 
-    return `${key} ${value}`
+    return (optional && !value) ? '' : `${key} ${value}`
   }).join(' ')
 
   return `${command} ${missingParameters}`
@@ -33,7 +35,7 @@ export const resolveCommand = (command: string, options: any = {}) => {
 export const run = (command: string) => {
   const shouldRunDevToolCli = process.platform === 'darwin'
 
-  // console.log(`command => ${command}`);
+  console.log(`command => ${command}`)
 
   if (shouldRunDevToolCli) {
     const cliPath = '/Applications/wechatwebdevtools.app/Contents/MacOS/cli'

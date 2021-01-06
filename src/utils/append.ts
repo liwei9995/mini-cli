@@ -3,7 +3,13 @@ import semver from 'semver'
 import userName from 'git-user-name'
 import dayjs from 'dayjs'
 
-export const appendProject = () => process.cwd()
+export const appendProject = (checkProjectConfig = false) => {
+  const cwd = process.cwd()
+  const projectConfigPath = `${cwd}/project.config.json`
+  const path = fs.existsSync(projectConfigPath) ? cwd : ''
+
+  return checkProjectConfig ? path : cwd
+}
 
 export const appendInfoOutput = () => {
   const dirPath = `${process.cwd()}/.win`
