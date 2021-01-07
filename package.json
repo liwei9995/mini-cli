@@ -42,7 +42,11 @@
         "url": "git+ssh://git@gitlab.com/liwei9995/mini.git"
     },
     "keywords": [
-        "mini"
+        "mini",
+        "WeChat",
+        "WeChat Cli",
+        "mini cli",
+        "cli"
     ],
     "license": "UNLICENSED",
     "bugs": {
