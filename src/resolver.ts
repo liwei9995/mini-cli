@@ -5,11 +5,13 @@ export const resolveCommand = (command: string, options: any = {}) => {
   const action = options && options.command
   const found = cmdOpts.find(_ => _.cmd === action)
   const opts = found && found.opts
-  const missingOpts = (opts || []).filter(opt => {
+  const missingOpts = (opts || []).filter((opt) => {
     const { alias = '' } = (opt || {}) as { alias?: string }
-    const name = opt.name || alias.slice(1)
+    const optName = opt.name
+    const optAlias = alias.slice(1)
+    const isDerivedFromProps = options[optName] || options[optAlias]
 
-    return (opt.required || opt.optional) && !options[name]
+    return (opt.required || opt.optional) && !isDerivedFromProps
   })
   const missingParameters = missingOpts.map(o => {
     const {

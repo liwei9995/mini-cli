@@ -33,5 +33,5 @@ export const appendDescription = () => {
   const name = userName()
   const date = dayjs(new Date).format('MMMM D, YYYY h:mm A')
 
-  return `${name} at ${date} upload`
+  return `'${name} at ${date} upload'`
 }

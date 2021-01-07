@@ -32,16 +32,16 @@ import { run, resolveCommand } from './resolver'
 console.log(chalk.cyan(`WeChat Mini Program CLI v${require('../package.json').version}`))
 ;(async () => {
   const { help, h, version, v } = argv
+  const options = await resolveOptions()
 
   if (help || h) {
     // logHelp()
     // return
-  } else if (version || v) {
+  } else if ((version || v) && !options.command) {
     // noop, already logged
     return
   }
 
-  const options = await resolveOptions()
   if (options.command === 'port') {
     const port = getPort()
     console.log(chalk.blue(`微信开发者工具运行端口: ${chalk.magenta(port)}`))
