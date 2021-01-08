@@ -9,7 +9,7 @@ const generateMd5 = (str: string) => {
   return hash.digest('hex')
 }
 
-export const getPort = () => {
+export const getPort = (): number => {
   const installPath = '/Applications/wechatwebdevtools.app/Contents/MacOS'
   const md5 = generateMd5(installPath)
   const home = process.env.HOME
