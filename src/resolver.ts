@@ -1,3 +1,4 @@
+import chalk from 'chalk'
 import { execSync } from 'child_process'
 import { cmdOpts, isFunction } from './utils/index'
 
@@ -37,7 +38,7 @@ export const resolveCommand = (command: string, options: any = {}) => {
 export const run = (command: string) => {
   const shouldRunDevToolCli = process.platform === 'darwin'
 
-  console.log(`command => ${command}`)
+  console.log(chalk.cyan(`command => ${chalk.blue(command)}`))
 
   if (shouldRunDevToolCli) {
     const cliPath = '/Applications/wechatwebdevtools.app/Contents/MacOS/cli'
