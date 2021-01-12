@@ -1,6 +1,6 @@
 {
     "name": "ff-mini-cli",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "author": "Walker Li",
     "description": "A tool for mini program development and deployment",
     "bin": {
