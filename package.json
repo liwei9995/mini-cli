@@ -1,72 +1,70 @@
 {
-    "name": "ff-mini-cli",
-    "version": "0.0.7",
-    "author": "Walker Li",
-    "description": "A tool for mini program development and deployment",
-    "bin": {
-        "mini": "bin/mini.js"
-    },
-    "main": "dist/mini.js",
-    "types": "dist/index.d.ts",
-    "files": [
-        "bin",
-        "dist/**/*.js",
-        "dist/**/*.d.ts"
+  "name": "ff-mini-cli",
+  "version": "0.0.8",
+  "author": "liwei9995@oyiyio.com",
+  "description": "A tool for mini program development and deployment",
+  "bin": {
+    "mini": "bin/mini.js"
+  },
+  "main": "dist/mini.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "bin",
+    "dist/**/*.js",
+    "dist/**/*.d.ts"
+  ],
+  "engines": {
+    "node": ">=10.16.0"
+  },
+  "scripts": {
+    "dev": "tsc -w --incremental --p src",
+    "build": "rm -rf dist && tsc -p src",
+    "lint": "prettier --write --parser typescript \"src/**/*.ts\"",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "prepublishOnly": "yarn build && yarn changelog",
+    "postpublish": "git add CHANGELOG.md && git commit -m 'chore: changelog [ci skip]'"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged",
+    "commit-msg": "node scripts/verifyCommit.js"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write"
     ],
-    "engines": {
-        "node": ">=10.16.0"
-    },
-    "scripts": {
-        "dev": "tsc -w --incremental --p src",
-        "build": "rm -rf dist && tsc -p src",
-        "lint": "prettier --write --parser typescript \"src/**/*.ts\"",
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
-        "prepublishOnly": "yarn build && yarn changelog",
-        "postpublish": "git add CHANGELOG.md && git commit -m 'chore: changelog [ci skip]'"
-    },
-    "gitHooks": {
-        "pre-commit": "lint-staged",
-        "commit-msg": "node scripts/verifyCommit.js"
-    },
-    "lint-staged": {
-        "*.js": [
-            "prettier --write"
-        ],
-        "*.ts": [
-            "prettier --parser=typescript --write"
-        ]
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+ssh://git@github.com/liwei9995/mini-cli.git"
-    },
-    "keywords": [
-        "mini",
-        "WeChat",
-        "WeChat Cli",
-        "mini cli",
-        "cli"
-    ],
-    "license": "UNLICENSED",
-    "bugs": {
-        "url": "https://github.com/liwei9995/mini-cli/issues"
-    },
-    "homepage": "https://github.com/liwei9995/mini-cli#readme",
-    "devDependencies": {
-        "@types/git-user-name": "^2.0.0",
-        "@types/node": "^14.0.23",
-        "@types/semver": "^7.3.4",
-        "conventional-changelog-cli": "^2.0.34",
-        "lint-staged": "^10.2.11",
-        "prettier": "^2.0.5",
-        "typescript": "^3.9.6"
-    },
-    "dependencies": {
-        "chalk": "^4.1.0",
-        "dayjs": "^1.9.8",
-        "git-user-name": "^2.0.0",
-        "minimist": "^1.2.5",
-        "semver": "^7.3.4"
-    }
+    "*.ts": [
+      "prettier --parser=typescript --write"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/liwei9995/mini-cli.git"
+  },
+  "keywords": [
+    "mini",
+    "WeChat",
+    "WeChat Cli",
+    "mini cli",
+    "cli"
+  ],
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/liwei9995/mini-cli/issues"
+  },
+  "homepage": "https://github.com/liwei9995/mini-cli#readme",
+  "devDependencies": {
+    "@types/git-user-name": "^2.0.0",
+    "@types/node": "^14.0.23",
+    "conventional-changelog-cli": "^2.0.34",
+    "lint-staged": "^10.2.11",
+    "prettier": "^2.0.5",
+    "typescript": "^3.9.6"
+  },
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "dayjs": "^1.9.8",
+    "git-user-name": "^2.0.0",
+    "minimist": "^1.2.5"
+  }
 }

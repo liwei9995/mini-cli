@@ -1,5 +1,4 @@
 import fs from 'fs'
-import semver from 'semver'
 import userName from 'git-user-name'
 import dayjs from 'dayjs'
 
@@ -24,7 +23,8 @@ export const appendInfoOutput = () => {
 export const appendVersion = () => {
   const pkgPath = `${process.cwd()}/package.json`
   const pkg = require(pkgPath)
-  const version = semver.inc((pkg.version || '0.0.0'), 'patch')
+  // 默认使用项目中指定的版本号
+  const version = pkg.version || '0.0.0'
 
   return version
 }
