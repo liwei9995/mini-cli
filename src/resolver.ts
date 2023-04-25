@@ -38,7 +38,9 @@ export const resolveCommand = (command: string, options: any = {}) => {
 export const run = (command: string) => {
   const shouldRunDevToolCli = process.platform === 'darwin'
 
-  console.log(chalk.cyan(`command => ${chalk.blue(command)}`))
+  if (command.trim()) {
+    console.log(chalk.cyan(`command => ${chalk.blue(command)}`))
+  }
 
   if (shouldRunDevToolCli) {
     const cliPath = '/Applications/wechatwebdevtools.app/Contents/MacOS/cli'

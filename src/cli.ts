@@ -1,6 +1,7 @@
 const argv = require('minimist')(process.argv.slice(2))
 
 import chalk from 'chalk'
+import figlet from 'figlet'
 import { getPort } from './utils'
 import { run, resolveCommand } from './resolver'
 
@@ -29,7 +30,7 @@ import { run, resolveCommand } from './resolver'
 // `)
 // }
 
-console.log(chalk.cyan(`WeChat Mini Program CLI v${require('../package.json').version}`))
+console.log(`${figlet.textSync('Mini CLI')} ${chalk.cyan(`v${require('../package.json').version}`)}`)
 ;(async () => {
   const { help, h, version, v } = argv
   const options = await resolveOptions()
