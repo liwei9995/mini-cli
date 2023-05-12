@@ -11,8 +11,7 @@
   "files": [
     "bin",
     "dist/**/*.js",
-    "dist/**/*.d.ts",
-    "public"
+    "dist/**/*.d.ts"
   ],
   "engines": {
     "node": ">=10.16.0"
