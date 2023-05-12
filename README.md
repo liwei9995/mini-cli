@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="logo" src="https://static.oyiyio.com/api/v1/storage/fetch/file?id=5ff58250592ed400186d935f" width="120" style="margin-bottom: 10px;">
+  <img alt="logo" src="./public/logo/wx_logo.png" width="64" style="margin-bottom: 10px;">
 </p>
 <h3 align="center">轻量、可靠的微信开发者工具命令行封装</h3>
 
@@ -20,6 +20,9 @@ npm i ff-mini-cli -g
 
 # 通过 yarn 安装
 yarn global add ff-mini-cli
+
+# 通过 pnpm 安装
+pnpm add -g ff-mini-cli
 ```
 
 ## 使用
