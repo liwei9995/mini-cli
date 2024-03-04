@@ -30,7 +30,11 @@ import { run, resolveCommand } from './resolver'
 // `)
 // }
 
-console.log(`${figlet.textSync('Mini CLI')} ${chalk.cyan(`v${require('../package.json').version}`)}`)
+console.log(
+  `${figlet.textSync('Mini CLI')} ${chalk.cyan(
+    `v${require('../package.json').version}`
+  )}`
+)
 ;(async () => {
   const { help, h, version, v } = argv
   const options = await resolveOptions()

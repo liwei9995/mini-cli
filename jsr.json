@@ -1,0 +1,5 @@
+{
+  "name": "@yiyi/mini-cli",
+  "version": "0.0.10",
+  "exports": "./src/cli.ts"
+}

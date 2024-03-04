@@ -1,4 +1,4 @@
-import fs from 'fs'
+import fs from 'node:fs'
 import userName from 'git-user-name'
 import dayjs from 'dayjs'
 
@@ -31,7 +31,7 @@ export const appendVersion = () => {
 
 export const appendDescription = () => {
   const name = userName()
-  const date = dayjs(new Date).format('MMMM D, YYYY h:mm A')
+  const date = dayjs(new Date()).format('MMMM D, YYYY h:mm A')
 
   return `'${name} at ${date} upload'`
 }
